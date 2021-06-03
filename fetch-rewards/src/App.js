@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -6,8 +7,21 @@ class App extends Component {
     super()
 
     this.state = {
-      listNum : [],
-      filteredNames: []
+      data: []
+      // listNum : [],
+      // filteredNames: []
+    }
+  }
+
+  fetchData = async () => {
+    try {
+      const newFetchData = await fetch('https://fetch-hiring.s3.amazonaws.com/hiring.json')
+      console.log(newFetchData);
+      this.setState({
+        data: newFetchData
+      })
+    } catch(e) {
+        console.log("ERROR", e)
     }
   }
 
