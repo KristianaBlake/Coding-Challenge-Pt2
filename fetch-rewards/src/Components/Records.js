@@ -1,5 +1,6 @@
 import React, { Component, useLayoutEffect } from 'react';
 import axios from 'axios';
+import { Table } from 'semantic-ui-react';
 
 export default class Records extends React.Component {
   state = {

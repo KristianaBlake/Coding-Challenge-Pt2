@@ -1,4 +1,5 @@
 import './App.css';
+import DataTable from './Components/Table.js';
 import Records from './Components/Records.js';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <DataTable/>
       <Records/> 
     </div>
   );
