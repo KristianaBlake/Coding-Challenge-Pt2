@@ -1,24 +1,25 @@
-import React, { Component, useLayoutEffect } from 'react';
-import axios from 'axios';
 import './App.css';
+import Records from './Components/Records.js';
 
-export default class App extends React.Component {
-  state = {
-    records: []
-  }
-
- componentDidMount() {
-   axios.get('https://fetch-hiring.s3.amazonaws.com/hiring.json').then(res => this.setState({records: res.data}))
-  
-  };
-
-
-  render(){
-    return (
-      <ul>
-        {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
-      </ul>
-
-    )
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <Records/> 
+    </div>
+  );
 }
+
+export default App;
