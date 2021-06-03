@@ -1,35 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, useLayoutEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-class App extends Component {
-  constructor(){
-    super()
-
-    this.state = {
-      data: []
-      // listNum : [],
-      // filteredNames: []
-    }
+export default class App extends React.Component {
+  state = {
+    records: []
   }
 
-  fetchData = async () => {
-    try {
-      const newFetchData = await fetch('https://fetch-hiring.s3.amazonaws.com/hiring.json')
-      console.log(newFetchData);
-      this.setState({
-        data: newFetchData
-      })
-    } catch(e) {
-        console.log("ERROR", e)
-    }
-  }
+ componentDidMount() {
+   axios.get('https://fetch-hiring.s3.amazonaws.com/hiring.json').then(res => this.setState({records: res.data}))
+  
+  };
+
 
   render(){
+    return (
+      <ul>
+        {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
+      </ul>
 
-    return <h1>Hello</h1>
-  
+    )
   }
 }
-
-export default App;
