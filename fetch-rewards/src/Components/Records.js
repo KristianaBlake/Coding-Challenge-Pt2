@@ -15,9 +15,20 @@ export default class Records extends React.Component {
 
   render(){
     return (
-      <ul>
-        {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
-      </ul>
+
+        <Table.Body>
+            {this.state.records.map( record => 
+                <Table.Row key = {record.id}>
+                    <Table.Cell>{record.listId}</Table.Cell>
+                </Table.Row>
+            )}
+        </Table.Body>
+
+
+
+        // <ul>
+        // {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
+        // </ul>
 
     )
   }
