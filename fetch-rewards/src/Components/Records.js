@@ -24,12 +24,9 @@ export default class Records extends React.Component {
             )}
         </Table.Body>
 
-
-
         // <ul>
         // {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
         // </ul>
-
     )
   }
 }
