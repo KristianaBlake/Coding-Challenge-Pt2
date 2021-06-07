@@ -1,23 +1,53 @@
-import React, { Component, useLayoutEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
+import { Table } from 'semantic-ui-react';
 
-export default class Records extends React.Component {
+export default class RecordsList extends React.Component {
   state = {
-    records: []
+      records: []
   }
 
- componentDidMount() {
-   axios.get('https://fetch-hiring.s3.amazonaws.com/hiring.json').then(res => this.setState({records: res.data}))
+  componentDidMount() {
+      axios.get('https://fetch-hiring.s3.amazonaws.com/hiring.json')
+        .then(res => this.setState({records: res.data}))
+        console.log(records)
+        .catch(error => {
+          this.setState({ errorMessage: error.message });
+          console.error('There was an error!', error)
+        });
+  }
   
-  };
+  // display all items grouped by listId
 
+  //function for Names 
 
   render(){
-    return (
-      <ul>
-        {this.state.records.map(record => <li key={record.id}>{record.listId}</li>)}
-      </ul>
 
+    const records = this.state.records.filter(record => !record).map((record, i));
+
+    return (
+      <Table>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>
+              Id
+            </Table.HeaderCell>
+            <Table.HeaderCell
+            >
+              List Id
+            </Table.HeaderCell>
+            <Table.HeaderCell
+            >
+              Name
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          <Table.Row key = {record.id}>
+              <Table.Cell>{records}</Table.Cell>
+          </Table.Row>
+          </Table.Body>
+      </Table>
     )
   }
 }

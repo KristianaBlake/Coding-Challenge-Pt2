@@ -1,10 +1,11 @@
 import './App.css';
-import DataTable from './Components/Table.js';
+import RecordsList from './Components/RecordsList';
+// import DataTable from './Components/Table.js';
 
 function App() {
   return (
     <div className="App">
-      <DataTable/>
+      <RecordsList/>
     </div>
   );
 }
